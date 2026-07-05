@@ -146,13 +146,13 @@ car-price-predictor/
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/car-price-predictor.git
+git clone https://github.com/yourusername/car-price-prediction-random-forest.git
 ```
 
 Move inside the project:
 
 ```bash
-cd car-price-predictor
+cd car-price-prediction-random-forest
 ```
 
 Install dependencies:
@@ -257,9 +257,9 @@ B.Tech Computer Science Engineering
 
 Aspiring Machine Learning & Data Science Engineer
 
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/Aryan2006-code
 
-LinkedIn: https://linkedin.com/in/yourprofile
+LinkedIn: www.linkedin.com/in/aryankumar2006
 
 ---
 
