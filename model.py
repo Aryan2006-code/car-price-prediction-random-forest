@@ -2,8 +2,6 @@ import os
 import joblib
 import numpy as np
 import pandas as pd 
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import StratifiedShuffleSplit
@@ -30,10 +28,12 @@ def build_pipeline(num_attribute , low_cat_attribute ):
 
     return full_pipeline
 
-if not os.path.exists(MODEL_FILE):
+
+def train_model():
     car_data = pd.read_csv("data/car data.csv")
-    car_data= car_data.drop("Car_Name",axis=1
-                            )
+    car_data= car_data.drop("Car_Name",axis=1)
+
+
     # creating Stratified test set
     car_data["P_price_cat"]= pd.cut(car_data["Present_Price"],bins=[0.0,1.5,3.0,4.5,6.0,np.inf],labels=[1,2,3,4,5])
     splitt= StratifiedShuffleSplit(n_splits=1, test_size =0.2 , random_state=42)
@@ -47,7 +47,7 @@ if not os.path.exists(MODEL_FILE):
 
     num_attributes =car_features.drop(["Fuel_Type","Selling_type","Transmission"],axis =1).columns.tolist()
     l_cat_attributes = ["Fuel_Type","Selling_type","Transmission"]
-    
+        
 
     pipeline = build_pipeline(num_attributes,l_cat_attributes)
     car_prepared = pipeline.fit_transform(car_features,car_label)
@@ -60,17 +60,6 @@ if not os.path.exists(MODEL_FILE):
 
     print("model trained")
 
-else:
 
-    #lets do inference
-    model = joblib.load(MODEL_FILE)
-    pipeline =joblib.load(PIPELINE_FILE)
-
-    input_data = pd.read_csv("input.csv")
-    features = input_data.drop("Selling_Price", axis=1)
-    transformed_data = pipeline.transform(features)
-    prediction = model.predict(transformed_data)
-    input_data["Selling_Price"] = prediction
-    input_data.to_csv("output.csv",index=False)
-
-    print("inference is completed successfully , output is saved to output.csv")
+if __name__=="__main__":
+    train_model()
