@@ -1,155 +1,184 @@
-# 🚗 Car Price Prediction using Machine Learning
+# 🚗 Car Price Prediction using Random Forest
 
-A Machine Learning project that predicts the selling price of a used car based on various vehicle attributes. This project demonstrates the complete ML workflow, from data preprocessing and feature engineering to model training, evaluation, and inference.
+An end-to-end Machine Learning application that predicts the selling price of used cars based on their specifications. The project demonstrates the complete ML lifecycle—from data preprocessing and model training to deployment with an interactive Gradio web interface.
+
+## 🌐 Live Demo
+
+**Try the application here:**
+
+https://huggingface.co/spaces/aryan-p/car-price-prediction-random-forest
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
-The objective of this project is to build a regression model capable of estimating the selling price of a used car using historical car sales data.
+This project predicts the selling price of used cars using a **Random Forest Regressor** trained on historical vehicle data. The application allows users to upload a CSV file containing vehicle information and receive predicted selling prices in a downloadable CSV format.
 
-The project covers:
+The project demonstrates:
 
-* Data preprocessing
+* End-to-End Machine Learning Pipeline
+* Data Preprocessing
 * Exploratory Data Analysis (EDA)
 * Feature Engineering
-* Categorical Encoding
-* Train-Test Splitting
-* Model Training
-* Model Evaluation
-* Model Serialization
-* Inference on unseen data
+* Model Training & Evaluation
+* Model Serialization with Joblib
+* Batch Prediction using CSV Upload
+* Interactive Gradio Web Application
+* Deployment on Hugging Face Spaces
 
 ---
 
-## 📂 Dataset
+# ✨ Features
+
+* 🚗 Predict used car selling prices
+* 📁 Upload CSV files for batch prediction
+* 📥 Download prediction results as CSV
+* 🤖 Random Forest Regression model
+* ⚙️ Automated preprocessing pipeline
+* 💾 Serialized model using Joblib
+* 🌐 Browser-based interface powered by Gradio
+
+---
+
+# 📂 Dataset
 
 The dataset contains information about used cars, including:
 
-| Feature       | Description                          |
-| ------------- | ------------------------------------ |
-| Car_Name      | Name of the Car                      |
-| Year          | Manufacturing Year                   |
-| Present_Price | Current Ex-Showroom Price (in Lakhs) |
-| Kms_Driven    | Kilometers Driven                    |
-| Fuel_Type     | Petrol / Diesel / CNG                |
-| Selling_type  | Dealer or Individual                 |
-| Transmission  | Manual / Automatic                   |
-| Owner         | Number of Previous Owners            |
-| Selling_Price | Target Variable                      |
+| Feature       | Description                       |
+| ------------- | --------------------------------- |
+| Car_Name      | Name of the Car                   |
+| Year          | Manufacturing Year                |
+| Present_Price | Current Ex-Showroom Price (Lakhs) |
+| Kms_Driven    | Kilometers Driven                 |
+| Fuel_Type     | Petrol / Diesel / CNG             |
+| Selling_type  | Dealer or Individual              |
+| Transmission  | Manual / Automatic                |
+| Owner         | Number of Previous Owners         |
+| Selling_Price | Target Variable                   |
 
 ---
 
-## 🛠 Technologies Used
+# 🛠 Technologies Used
 
 * Python
 * Pandas
 * NumPy
 * Scikit-learn
+* Gradio
+* Joblib
 * Matplotlib
 * Seaborn
-* Joblib
 
 ---
 
-## 📊 Workflow
+# 📊 Machine Learning Workflow
 
-### 1. Data Loading
+### 1. Data Preparation
 
-* Imported the dataset
-* Checked dataset information
-* Verified data types
-* Checked for missing values
-
----
+* Dataset loading
+* Data cleaning
+* Missing value inspection
+* Feature selection
 
 ### 2. Exploratory Data Analysis
 
-Performed:
-
-* Dataset summary
 * Correlation analysis
-* Correlation Heatmap
-* Feature inspection
-* Distribution analysis
-
----
+* Feature distribution
+* Heatmaps
+* Data visualization
 
 ### 3. Data Preprocessing
 
-Performed preprocessing steps including:
-
-* One-Hot Encoding for categorical variables
-* Feature selection
+* One-Hot Encoding
+* ColumnTransformer Pipeline
 * Stratified Train-Test Split
-* Model Pipeline using `ColumnTransformer`
-
----
+* Feature Engineering
 
 ### 4. Model Training
 
-Initially trained:
-
-* Decision Tree Regressor
-
-Later replaced with:
+**Algorithm Used**
 
 * ✅ Random Forest Regressor
 
-Reason:
+### Why Random Forest?
 
 * Better generalization
 * Reduced overfitting
-* Improved prediction accuracy
-
----
+* Handles nonlinear relationships
+* High prediction accuracy
 
 ### 5. Model Evaluation
 
-Evaluation Metrics Used:
+Metrics Used
 
 * Mean Squared Error (MSE)
 * R² Score
 
-### Final Model Performance
+### Final Performance
 
-* **Model:** Random Forest Regressor
-* **R² Score:** **0.969**
-* Successfully predicts selling prices with high accuracy.
+| Model                   |  R² Score |
+| ----------------------- | --------: |
+| Random Forest Regressor | **0.969** |
 
 ---
 
-## 📁 Project Structure
+# 🌐 Web Application
 
+The project includes a Gradio web application where users can predict selling prices without writing any code.
+
+### Workflow
+
+```text
+Upload CSV
+      │
+      ▼
+Validate Input
+      │
+      ▼
+Preprocessing Pipeline
+      │
+      ▼
+Random Forest Model
+      │
+      ▼
+Generate Predictions
+      │
+      ▼
+Download Output CSV
 ```
+
+---
+
+# 📁 Project Structure
+
+```text
 car-price-predictor/
+│
+├── app.py                  # Gradio Frontend
+├── predictor.py            # Prediction Logic
+├── model.py                # Model Training
+├── model.pkl               # Trained Model
+├── pipeline.pkl            # Preprocessing Pipeline
 │
 ├── data/
 │   └── car data.csv
 │
-├── main.py
-├── test.ipynb
-├── input.csv
-├── output.csv
 ├── requirements.txt
 ├── README.md
-├── .gitignore
-│
-├── model_pkl
-└── pipeline_pkl
+└── .gitignore
 ```
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/car-price-predictor.git
+git clone https://github.com/<your-github-username>/car-price-predictor.git
 ```
 
-Move inside the project:
+Move into the project directory:
 
 ```bash
 cd car-price-predictor
@@ -163,93 +192,110 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Running the Project
+# ▶️ Running the Project
 
-Train the model:
-
-```bash
-python main.py
-```
-
-The script will:
-
-* Train the Random Forest model
-* Save the trained model
-* Save the preprocessing pipeline
-
-For inference:
-
-Place new car details inside `input.csv` and run:
+## Step 1: Train the Model
 
 ```bash
-python main.py
+python model.py
 ```
 
-Predictions will be saved in:
+This generates:
 
-```
-output.csv
-```
+* `model.pkl`
+* `pipeline.pkl`
 
 ---
 
-## 📈 Sample Prediction
+## Step 2: Launch the Web Application
+
+```bash
+python app.py
+```
+
+Open the generated local URL in your browser.
+
+---
+
+# 📥 How to Use
+
+1. Launch the application.
+2. Upload a CSV containing vehicle information.
+3. Click **Submit**.
+4. Wait for the prediction to complete.
+5. Download the generated CSV file containing predicted selling prices.
+
+> **Note:** If the uploaded CSV already contains the `Selling_Price` column, it is automatically ignored during prediction.
+
+---
+
+# 📄 Expected Input Columns
+
+Your CSV should contain:
+
+* Year
+* Present_Price
+* Kms_Driven
+* Fuel_Type
+* Selling_type
+* Transmission
+* Owner
+
+---
+
+# 📈 Sample Prediction
 
 | Present Price | Year | Fuel Type | Predicted Selling Price |
-| ------------- | ---- | --------- | ----------------------- |
-| 5.25          | 2018 | Petrol    | 4.92                    |
+| ------------- | ---- | --------- | ----------------------: |
+| 5.25          | 2018 | Petrol    |                    4.92 |
 
 ---
 
-## 💡 Challenges Faced
+# 📚 Concepts Demonstrated
 
-During development, I encountered several implementation challenges that helped deepen my understanding of Machine Learning and Scikit-learn.
-
-Some of the key learnings include:
-
-* Correct use of `precision_score()` parameters.
-* Passing column names instead of DataFrames to `ColumnTransformer`.
-* Understanding why `SimpleImputer` expects 2D input.
-* Different imputation strategies (mean, median, most frequent, constant).
-* Debugging visualization errors caused by variable naming mistakes.
-* Building preprocessing pipelines correctly.
-* Understanding when feature scaling is necessary.
-* Learning that Decision Trees do not require feature scaling.
-* Replacing Decision Tree with Random Forest to improve model performance.
-* Identifying that removing the high-cardinality `Car_Name` feature improved prediction accuracy.
-
----
-
-## 📚 Key Concepts Learned
-
-* Regression
-* Random Forest
-* Decision Trees
-* Train-Test Split
-* Stratified Sampling
-* One-Hot Encoding
+* Machine Learning Regression
+* Random Forest Regression
 * Feature Engineering
-* Feature Selection
-* Model Evaluation
+* One-Hot Encoding
 * Scikit-learn Pipelines
 * ColumnTransformer
-* Model Serialization using Joblib
+* Stratified Sampling
+* Model Serialization
+* Batch Inference
+* Model Deployment
 
 ---
 
-## 🚀 Future Improvements
+# 💡 Challenges & Learnings
 
-* Hyperparameter Tuning using GridSearchCV
-* Cross Validation
-* Feature Importance Visualization
+During this project I gained hands-on experience with:
+
+* Building reusable preprocessing pipelines
+* Using ColumnTransformer correctly
+* One-Hot Encoding categorical variables
+* Understanding when feature scaling is necessary
+* Debugging scikit-learn pipeline issues
+* Separating training and inference code
+* Model serialization using Joblib
+* Deploying ML models with Gradio
+* Creating batch prediction workflows using CSV files
+
+---
+
+# 🚀 Future Improvements
+
+* Hyperparameter tuning using GridSearchCV
+* Cross-validation
 * SHAP Explainability
-* Streamlit Web Application
-* REST API Deployment using Flask/FastAPI
+* Feature Importance Visualization
 * Docker Support
+* Prediction Confidence Scores
+* CI/CD Pipeline
+* Cloud Deployment
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Aryan Kumar Prajapati**
 
@@ -257,10 +303,12 @@ B.Tech Computer Science Engineering
 
 Aspiring Machine Learning & Data Science Engineer
 
-GitHub: https://github.com/yourusername
+**GitHub**: https://github.com/Aryan2006-code
 
-LinkedIn: https://linkedin.com/in/yourprofile
+**LinkedIn**: www.linkedin.com/in/aryankumar2006
 
 ---
 
-## ⭐ If you found this project helpful, consider giving it a star!
+# ⭐ Support
+
+If you found this project useful, please consider giving it a **⭐ Star** on GitHub. It helps others discover the project and supports future improvements.
