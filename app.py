@@ -9,10 +9,10 @@ demo = gr.Interface(
     - Year
     - Present_Price
     - Driven_kms
-    - Fuel_Type
-    - Selling_type
-    - Transmission 
-    - Owner""",
+    - Fuel_Type(Petrol,Diesel)
+    - Selling_type(Dealer,Individual)
+    - Transmission (Manual,Automatic)
+    - Owner(no. of previous owners)""",
     inputs=gr.File(label="upload CSV"),
     outputs=gr.File(label="Download result"),
     api_name="predict"
