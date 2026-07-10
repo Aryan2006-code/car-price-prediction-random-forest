@@ -3,6 +3,7 @@ from predictor import my_prediction
 
 demo = gr.Interface(
     fn=my_prediction,
+    title ="Car Price Prediction",
     description="""
     **file should contail**
     - Year
